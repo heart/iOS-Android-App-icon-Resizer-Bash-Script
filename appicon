@@ -26,8 +26,6 @@ start(){
 		echo -e "${GREEN}Resize > $ORIGINAL_FILE${NC}"
 
 		#=====IOS
-		createDistinationDir ios
-
 		resize_iOS_AppStoreArtwork
 
 		resize_iOS 20 icon20pt.png
@@ -54,16 +52,15 @@ start(){
 
 
 		#===ANDROID
-		createDistinationDir android
-
 		resize_Android 512 playStore
 		resize_Android 48 mipmap-mdpi
 		resize_Android 72 mipmap-hdpi
 		resize_Android 96 mipmap-xhdpi
 		resize_Android 144 mipmap-xxhdpi
 		resize_Android 192 mipmap-xxxhdpi
+
 	else
-		echo icon file not exist.
+		echo "$ORIGINAL_FILE not exist."
 	fi
 }
 

@@ -4,10 +4,10 @@ mac terminal bash script using to make app size of app icon. support iOS and and
 ```
 git clone git@github.com:heart/iOS-Android-App-icon-Resizer-Bash-Script.git
 cd iOS-Android-App-icon-Resizer-Bash-Script
-sudo chmod 755 appicon
-sudo mv appicon /usr/local/bin
+mv appicon /usr/local/bin/
 cd ..
 rm -rf iOS-Android-App-icon-Resizer-Bash-Script
+sudo chmod 755 /usr/local/bin/appicon
 ```
 
 ##  HOW TO USE

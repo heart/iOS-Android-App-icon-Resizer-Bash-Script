@@ -8,7 +8,7 @@ start(){
 	ORIGINAL_FILE=$1
 
 	if [ -f $ORIGINAL_FILE ]; then
-		echo -e ${GREEN}Resize > ${ORIGINAL_FILE} ${NC}
+		echo "Resize > $ORIGINAL_FILE"
 		#=====IOS
 		createDistinationDir ios
 

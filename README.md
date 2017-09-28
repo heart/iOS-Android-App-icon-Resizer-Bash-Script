@@ -16,7 +16,9 @@ For the best result icon.png must larger equal 1024x1024 pixels.
 ```
 appicon icon.png
 ```
-![alt text](https://github.com/heart/iOS-Android-App-icon-Resizer-Bash-Script/blob/master/screenshot/howtouse.jpg?raw=true)
+![app icon resizer screen shot](https://github.com/heart/iOS-Android-App-icon-Resizer-Bash-Script/blob/master/screenshot/howtouse.jpg?raw=true)
 
 ###	result
-![alt text](https://github.com/heart/iOS-Android-App-icon-Resizer-Bash-Script/blob/master/screenshot/result.jpg?raw=true)
+![app icon resizer screen shot (iOS)](https://github.com/heart/iOS-Android-App-icon-Resizer-Bash-Script/blob/master/screenshot/result.jpg?raw=true)
+
+![app icon resizer screen shot (Android)](https://github.com/heart/iOS-Android-App-icon-Resizer-Bash-Script/blob/master/screenshot/androidresult.jpg?raw=true)

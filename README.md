@@ -12,7 +12,7 @@ rm -rf iOS-Android-App-icon-Resizer-Bash-Script
 
 ##  HOW TO USE
 ###	runcommand
-For the best result icon.png must larger equal 1024x1024 pixels.
+For the best result icon.png must be greater than or equal to 1024x1024 pixels.
 ```
 appicon icon.png
 ```

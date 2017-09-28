@@ -12,7 +12,7 @@ start(){
 		#=====IOS
 		createDistinationDir ios
 
-		resize_iOS 1024 AppStoreIcon.png
+		resize_iOS_AppStoreArtwork
 
 		resize_iOS 20 icon20pt.png
 		resize_iOS 40 icon20pt@2x.png
@@ -53,16 +53,20 @@ start(){
 
 resize_iOS(){
 	DESTINATION_FILE="ios/$2"
-	cp $ORIGINAL_FILE $DESTINATION_FILE > /dev/null
-	sips -Z $1 $DESTINATION_FILE > /dev/null
+	sips -s format png -Z $1 $ORIGINAL_FILE --out $DESTINATION_FILE > /dev/null
+	echo -e $DESTINATION_FILE ${GREEN}Done.${NC}
+}
+
+resize_iOS_AppStoreArtwork(){
+	DESTINATION_FILE="ios/AppStoreIcon.jpg"
+	sips -s format jpeg -Z 1024 $ORIGINAL_FILE --out $DESTINATION_FILE > /dev/null
 	echo -e $DESTINATION_FILE ${GREEN}Done.${NC}
 }
 
 resize_Android(){
 	mkdir "android/$2"
 	DESTINATION_FILE="android/$2/ic_launcher.png"
-	cp $ORIGINAL_FILE $DESTINATION_FILE > /dev/null
-	sips -Z $1 $DESTINATION_FILE > /dev/null
+	sips -s format png -Z $1 $ORIGINAL_FILE --out $DESTINATION_FILE > /dev/null
 	echo -e $DESTINATION_FILE ${GREEN}Done.${NC}
 }
 

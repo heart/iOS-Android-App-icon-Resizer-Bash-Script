@@ -1,0 +1,77 @@
+#!/bin/bash
+
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+start(){
+	
+	ORIGINAL_FILE=$1
+
+	if [ -f $ORIGINAL_FILE ]; then
+		echo Start resize icon \n\n
+		#=====IOS
+		createDistinationDir ios
+
+		resize_iOS 1024 AppStoreIcon.png
+
+		resize_iOS 20 icon20pt.png
+		resize_iOS 40 icon20pt@2x.png
+		resize_iOS 60 icon20pt@3x.png
+
+		resize_iOS 29 icon29pt.png
+		resize_iOS 58 icon29pt@2x.png
+		resize_iOS 87 icon29pt@3x.png
+
+		resize_iOS 40 icon40pt.png
+		resize_iOS 80 icon40pt@2x.png
+
+		resize_iOS 120 icon40pt@3x.png
+		resize_iOS 120 icon60pt@2x.png
+
+		resize_iOS 180 icon60pt@3x.png
+		resize_iOS 180 icon60pt@3x.png
+
+		resize_iOS 76 icon76pt.png
+		resize_iOS 152 icon76pt@2x.png
+
+		resize_iOS 167 icon83.5pt@2x.png
+
+
+		#===ANDROID
+		createDistinationDir android
+
+		resize_Android 512 playStore
+		resize_Android 48 mipmap-mdpi
+		resize_Android 72 mipmap-hdpi
+		resize_Android 96 mipmap-xhdpi
+		resize_Android 144 mipmap-xxhdpi
+		resize_Android 192 mipmap-xxxhdpi
+	else
+		echo icon file not exist.
+	fi
+}
+
+resize_iOS(){
+	DESTINATION_FILE="ios/$2"
+	cp $ORIGINAL_FILE $DESTINATION_FILE > /dev/null
+	sips -Z $1 $DESTINATION_FILE > /dev/null
+	echo -e $DESTINATION_FILE ${GREEN}Done.${NC}
+}
+
+resize_Android(){
+	mkdir "android/$2"
+	DESTINATION_FILE="android/$2/ic_launcher.png"
+	cp $ORIGINAL_FILE $DESTINATION_FILE > /dev/null
+	sips -Z $1 $DESTINATION_FILE > /dev/null
+	echo -e $DESTINATION_FILE ${GREEN}Done.${NC}
+}
+
+
+createDistinationDir(){
+   	if [ -d $1 ]; then
+  		rm -rf $1
+	fi
+	mkdir $1 > /dev/null
+}
+
+start $1

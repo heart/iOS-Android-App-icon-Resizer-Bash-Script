@@ -7,8 +7,24 @@ start(){
 	
 	ORIGINAL_FILE=$1
 
+	NUM=0
+	DESTINATION_FOLDER="app_icon"
+	while [ -d $DESTINATION_FOLDER ] 
+	do
+		NUM=$(($NUM+1))
+		DESTINATION_FOLDER="app_icon_$NUM"
+	done
+	
+	IOS_FOLDER="$DESTINATION_FOLDER/ios"
+	ANDROID_FOLDER="$DESTINATION_FOLDER/android"
+
+	mkdir $DESTINATION_FOLDER
+	mkdir $IOS_FOLDER
+	mkdir $ANDROID_FOLDER	
+
 	if [ -f $ORIGINAL_FILE ]; then
 		echo -e "${GREEN}Resize > $ORIGINAL_FILE${NC}"
+
 		#=====IOS
 		createDistinationDir ios
 
@@ -52,30 +68,22 @@ start(){
 }
 
 resize_iOS(){
-	DESTINATION_FILE="ios/$2"
+	DESTINATION_FILE="$IOS_FOLDER/$2"
 	sips -s format png -Z $1 $ORIGINAL_FILE --out $DESTINATION_FILE > /dev/null
 	echo -e $DESTINATION_FILE ${GREEN}Done.${NC}
 }
 
 resize_iOS_AppStoreArtwork(){
-	DESTINATION_FILE="ios/AppStoreIcon.jpg"
+	DESTINATION_FILE="$IOS_FOLDER/AppStoreIcon.jpg"
 	sips -s format jpeg -Z 1024 $ORIGINAL_FILE --out $DESTINATION_FILE > /dev/null
 	echo -e $DESTINATION_FILE ${GREEN}Done.${NC}
 }
 
 resize_Android(){
-	mkdir "android/$2"
-	DESTINATION_FILE="android/$2/ic_launcher.png"
+	mkdir "$ANDROID_FOLDER/$2"
+	DESTINATION_FILE="$ANDROID_FOLDER/$2/ic_launcher.png"
 	sips -s format png -Z $1 $ORIGINAL_FILE --out $DESTINATION_FILE > /dev/null
 	echo -e $DESTINATION_FILE ${GREEN}Done.${NC}
-}
-
-
-createDistinationDir(){
-   	if [ -d $1 ]; then
-  		rm -rf $1
-	fi
-	mkdir $1 > /dev/null
 }
 
 start $1

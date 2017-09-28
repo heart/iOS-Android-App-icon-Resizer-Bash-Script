@@ -24,3 +24,9 @@ appicon icon.png
 ![app icon resizer screen shot (iOS)](https://github.com/heart/iOS-Android-App-icon-Resizer-Bash-Script/blob/master/screenshot/result.jpg?raw=true)
 
 ![app icon resizer screen shot (Android)](https://github.com/heart/iOS-Android-App-icon-Resizer-Bash-Script/blob/master/screenshot/androidresult.jpg?raw=true)
+
+
+## UNINSTALL SCRIPT
+```
+rm /usr/local/bin/appicon
+```
